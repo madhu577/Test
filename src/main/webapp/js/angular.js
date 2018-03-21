@@ -1,21 +1,18 @@
 var app = angular.module('app', []);
 
-app.controller('postController', function($scope, $http, $location) {
+app.controller('postemployerController', function($scope, $http, $location) {
 	$scope.submitForm = function(){
-		var url = $location.absUrl() + "postcustomer";
+		var url = $location.absUrl() + "postemployer";
 		
 		var config = {
                 headers : {
                     'Content-Type': 'application/json;charset=utf-8;'
                 }
         }
-		
 		var data = {
             firstName: $scope.firstname,
             lastName: $scope.lastname
         };
-		
-		
 		$http.post(url, data, config).then(function (response) {
 			$scope.postResultMessage = "Insert Sucessful!";
 		}, function (response) {
@@ -27,11 +24,11 @@ app.controller('postController', function($scope, $http, $location) {
 	}
 });
 
-app.controller('getallcustomersController', function($scope, $http, $location) {
+app.controller('getallemployersController', function($scope, $http, $location) {
 	
-	$scope.showAllCustomers = false;
+	$scope.showAllEmployers = false;
 
-	$scope.getAllCustomers = function() {
+	$scope.getAllEmployers = function() {
 		var url = $location.absUrl() + "findall";
 		console.log($location.absUrl());
 		var config = {
@@ -43,11 +40,11 @@ app.controller('getallcustomersController', function($scope, $http, $location) {
 		$http.get(url, config).then(function(response) {
 
 			if (response.data.status == "Done") {
-				$scope.allcustomers = response.data;
-				$scope.showAllCustomers = true;
+				$scope.allemployers = response.data;
+				$scope.showAllEmployers = true;
 
 			} else {
-				$scope.getResultMessage = "get All Customers Data Error!";
+				$scope.getResultMessage = "get All Employers Data Error!";
 			}
 
 		}, function(response) {
@@ -57,12 +54,12 @@ app.controller('getallcustomersController', function($scope, $http, $location) {
 	}
 });
 
-app.controller('getcustomerController', function($scope, $http, $location) {
+app.controller('getemployerController', function($scope, $http, $location) {
 	
-	$scope.showCustomer = false;
+	$scope.showEmployer = false;
 	
-	$scope.getCustomer = function() {
-		var url = $location.absUrl() + "customer/" + $scope.customerId;
+	$scope.getEmployer = function() {
+		var url = $location.absUrl() + "employer/" + $scope.employerId;
 
 		var config = {
 			headers : {
@@ -73,11 +70,11 @@ app.controller('getcustomerController', function($scope, $http, $location) {
 		$http.get(url, config).then(function(response) {
 
 			if (response.data.status == "Done") {
-				$scope.customer = response.data;
-				$scope.showCustomer = true;
+				$scope.employer = response.data;
+				$scope.showEmployer = true;
 
 			} else {
-				$scope.getResultMessage = "Customer Data Error!";
+				$scope.getResultMessage = "Employer Data Error!";
 			}
 
 		}, function(response) {
@@ -87,7 +84,7 @@ app.controller('getcustomerController', function($scope, $http, $location) {
 	}
 	
 	$scope.editsubmitForm = function(){
-		var url = $location.absUrl() + "editcustomer";
+		var url = $location.absUrl() + "update/employer";
 		
 		var config = {
                 headers : {
@@ -96,9 +93,9 @@ app.controller('getcustomerController', function($scope, $http, $location) {
         }
 		
 		var data = {
-				id: $scope.customerId,
-            firstName: $scope.customer.data.firstName,
-            lastName: $scope.customer.data.lastName
+				id: $scope.employerId,
+            firstName: $scope.employer.data.firstName,
+            lastName: $scope.employer.data.lastName
         };
 		
 		
@@ -114,27 +111,27 @@ app.controller('getcustomerController', function($scope, $http, $location) {
 	
 });
 
-app.controller('getcustomersbylastnameController', function($scope, $http, $location) {
+app.controller('getemployersbylastnameController', function($scope, $http, $location) {
 	
-	$scope.showCustomersByLastName = false;
+	$scope.showEmployersByLastName = false;
 	
-	$scope.getCustomersByLastName = function() {
+	$scope.getEmployersByLastName = function() {
 		var url = $location.absUrl() + "findbylastname";
 
 		var config = {
 			headers : {	'Content-Type' : 'application/json;charset=utf-8;' },
 		
-			params: { 'lastName' : $scope.customerLastName }
+			params: { 'lastName' : $scope.employerLastName }
 		}
 
 		$http.get(url, config).then(function(response) {
 
 			if (response.data.status == "Done") {
-				$scope.allcustomersbylastname = response.data;
-				$scope.showCustomersByLastName = true;
+				$scope.allemployersbylastname = response.data;
+				$scope.showEmployersByLastName = true;
 
 			} else {
-				$scope.getResultMessage = "Customer Data Error!";
+				$scope.getResultMessage = "Employer Data Error!";
 			}
 
 		}, function(response) {

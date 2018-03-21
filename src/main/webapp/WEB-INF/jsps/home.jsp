@@ -21,8 +21,8 @@
 		
 
 		<div class="row">
-			<div ng-controller="postController" class="col-md-3">
-				<form name="customerForm" ng-submit="submitForm()">
+			<div ng-controller="postemployerController" class="col-md-3">
+				<form name="employerForm" ng-submit="submitForm()">
 					<label>FirstName</label>
 					<input type="text" name="firstname"	class="form-control" ng-model="firstname" />
 					<label>LastName</label>
@@ -34,53 +34,53 @@
 			</div>
 		</div>
 		<div class="row">
-			<div ng-controller="getallcustomersController" class="col-md-3">
+			<div ng-controller="getallemployersController" class="col-md-3">
 				<h3>All Employers</h3>
 
-				<button ng-click="getAllCustomers()">Get All Employers</button>
+				<button ng-click="getAllEmployers()">Get All Employers</button>
 
-				<div ng-show="showAllCustomers">
+				<div ng-show="showAllEmployers">
 					<ul class="list-group">
-						<li ng-repeat="customer in allcustomers.data"><h4 class="list-group-item">
-								<strong>Customer {{$index}}</strong><br />
-								Id: {{customer.id}}<br />
-								First Name: {{customer.firstName}}<br />
-								Last Name: {{customer.lastName}}
+						<li ng-repeat="employer in allemployers.data"><h4 class="list-group-item">
+								<strong>Employer {{$index}}</strong><br />
+								Id: {{employer.id}}<br />
+								First Name: {{employer.firstName}}<br />
+								Last Name: {{employer.lastName}}
 						</h4></li>
 					</ul>
 				</div>
 				<p>{{getResultMessage}}</p>
 			</div>
 
-			<div ng-controller="getcustomerController" class="col-md-3">
+			<div ng-controller="getemployerController" class="col-md-3">
 				<h3>Employer by ID</h3>
 
 				<input type="text" class="form-control" style="width: 100px;"
-					ng-model="customerId" /> <br />
-				<button ng-click="getCustomer()">Get Employer</button>
+					ng-model="employerId" /> <br />
+				<button ng-click="getEmployer()">Get Employer</button>
 
-				<div ng-show="showCustomer">
-					Id: {{customer.data.id}}<br />
-					First Name: {{customer.data.firstName}}<br />
-					Last Name: {{customer.data.lastName}}
+				<div ng-show="showEmployer">
+					Id: {{employer.data.id}}<br />
+					First Name: {{employer.data.firstName}}<br />
+					Last Name: {{employer.data.lastName}}
 				</div>
 				<p>{{getResultMessage}}</p>
 			</div>
 
-			<div ng-controller="getcustomersbylastnameController" class="col-md-4">
+			<div ng-controller="getemployersbylastnameController" class="col-md-4">
 				<h3>Employers by LastName</h3>
 
-				<input type="text" class="form-control" style="width: 100px;" ng-model="customerLastName" /><br />
-				<button ng-click="getCustomersByLastName()">Get Employer</button>
+				<input type="text" class="form-control" style="width: 100px;" ng-model="employerLastName" /><br />
+				<button ng-click="getEmployersByLastName()">Get Employer</button>
 
-				<div ng-show="showCustomersByLastName">
+				<div ng-show="showEmployersByLastName">
 
 					<ul class="list-group">
-						<li ng-repeat="customer in allcustomersbylastname.data"><h4	class="list-group-item">
+						<li ng-repeat="employer in allemployersbylastname.data"><h4	class="list-group-item">
 								<strong>Employer {{$index}}</strong><br />
-								Id: {{customer.id}}<br />
-								First Name: {{customer.firstName}}<br />
-								Last Name: {{customer.lastName}}
+								Id: {{employer.id}}<br />
+								First Name: {{employer.firstName}}<br />
+								Last Name: {{employer.lastName}}
 						</h4></li>
 					</ul>
 				</div>
@@ -92,20 +92,20 @@
 		<div class="row">
 		
 
-			<div ng-controller="getcustomerController" class="col-md-3" >
+			<div ng-controller="getemployerController" class="col-md-3" >
 				<h3>Edit Employer by ID</h3>
 
 				<input type="text" class="form-control" style="width: 100px;"
-					ng-model="customerId" /> <button ng-click="getCustomer()">Get Employer</button>
+					ng-model="employerId" /> <button ng-click="getEmployer()">Get Employer to edit</button>
 
-				<div ng-show="showCustomer" class="selected">
-					Id: {{customer.data.id}}<br />
+				<div ng-show="showEmployer" class="selected">
+					Id: {{employer.data.id}}<br />
 					First Name: <br />
 					<input type="text" class="form-control" style="width: 100px;"
-					ng-model="customer.data.firstName" /> 
+					ng-model="employer.data.firstName" /> 
 					Last Name: 
 					<input type="text" class="form-control" style="width: 100px;"
-					ng-model="customer.data.lastName" /> 
+					ng-model="employer.data.lastName" /> 
 					<button ng-click="editsubmitForm()">Update Employer</button>
 				</div>
 				<p>{{getResultMessage}}</p>
