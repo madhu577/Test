@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="container" ng-app="app">
-		<h1>Employer Search</h1>
+		<h1>Employer Registration</h1>
 		
 
 		<div class="row">
