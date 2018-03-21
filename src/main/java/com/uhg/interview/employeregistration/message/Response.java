@@ -1,4 +1,4 @@
-package com.javasampleapproach.angularjpamysql.message;
+package com.uhg.interview.employeregistration.message;
 
 public class Response {
 	private String status;

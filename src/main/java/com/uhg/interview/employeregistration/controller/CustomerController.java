@@ -1,7 +1,12 @@
-package com.javasampleapproach.angularjpamysql.controller;
+package com.uhg.interview.employeregistration.controller;
 
 import java.util.List;
 
+
+
+ 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,20 +15,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.javasampleapproach.angularjpamysql.message.Response;
-import com.javasampleapproach.angularjpamysql.model.Customer;
-import com.javasampleapproach.angularjpamysql.repo.CustomerRepository;
+import com.uhg.interview.employeregistration.message.Response;
+import com.uhg.interview.employeregistration.model.Customer;
+import com.uhg.interview.employeregistration.repo.CustomerRepository;
 
 @RestController
 public class CustomerController {
 
 	@Autowired
 	CustomerRepository repository;
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    
 	@RequestMapping(value = "/postcustomer", method = RequestMethod.POST)
 	public void postCustomer(@RequestBody Customer customer) {
-
-		repository.save(new Customer(customer.getFirstName(), customer.getLastName()));
+		logger.debug("POST  /postcustomer, RequestBody "+customer.toString());
+        //logger.info("This is an info message");
+        //logger.warn("This is a warn message");
+        try{
+        	repository.save(new Customer(customer.getFirstName(), customer.getLastName()));
+        }catch(Exception e){
+        	logger.error("Error at  /postcustomer: "+e.getMessage());
+        }
 	}
 
 	@RequestMapping("/findall")

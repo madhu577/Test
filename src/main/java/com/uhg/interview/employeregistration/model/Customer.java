@@ -1,4 +1,4 @@
-package com.javasampleapproach.angularjpamysql.model;
+package com.uhg.interview.employeregistration.model;
 
 import java.io.Serializable;
 

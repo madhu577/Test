@@ -1,4 +1,4 @@
-package com.javasampleapproach.angularjpamysql.controller;
+package com.uhg.interview.employeregistration.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
